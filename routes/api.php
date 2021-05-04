@@ -3,6 +3,8 @@
 use App\Http\Controllers\MainController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\RegisterController;
+use App\Http\Controllers\LoginController;
 
 /*
 |--------------------------------------------------------------------------
@@ -15,8 +17,16 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:api')->get('/user', function (Request $request) {
-   return $request->user();
+Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
+    return $request->user();
+});
+Route::middleware('auth:sanctum')->get('/athenticated', function () {
+   return true;
 });
 
 Route::get('users', [MainController::class, 'index']);
+
+Route::middleware('guest')->group(function(){
+	Route::post('register', [RegisterController::class, 'register']);
+	Route::post('login', [LoginController::class, 'login']);
+});
