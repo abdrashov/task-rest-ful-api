@@ -1,29 +1,42 @@
+# Junior PHP Разработчик Task
 
-# Junior PHP Разработчик 
 
-RESTfull API написано на Laravel [route/api.php](https://github.com/abdrashov/task-junior-dev/blob/master/routes/api.php)
+RESTfull API gриложение
+
+~~~json
+{
+	"require": {
+		"laravel/framework": "^8.12",
+		"tymon/jwt-auth": "^1.0"
+	}
+}
+~~~
+
 
 
 ### Register Rest API
 
 Получает данные POST **'/api/register'**:
 ~~~php
-	$url = ;
 	$params = 'name', 'password', 'password_confirmation';
 ~~~
 Возвращает данные
-~~~php
-	json(['message' => ''], 201);
+~~~json
+{
+	"message": "User created successfully."
+}
 ~~~
+
 
 ### Login Rest API
 
 Получает данные POST **'/api/login'**:
 ~~~php
-	$url = '/api/register';
-	$params = 'name', 'password', 'password_confirmation';
+	$params = 'name', 'password';
 ~~~
 Возвращает данные
-~~~php
-	json(['user' => Auth::user()], 200);
+~~~json
+{
+	"token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC8xMjcuMC4wLjE6ODAwMFwvYXBpXC9sb2dpbiIsImlhdCI6MTYyMDI0MTM3MSwiZXhwIjoxNjIwMjQ0OTcxLCJuYmYiOjE2MjAyNDEzNzEsImp0aSI6ImtjZHdkRUhrMVpHUmdkOFQiLCJzdWIiOjgsInBydiI6IjIzYmQ1Yzg5NDlmNjAwYWRiMzllNzAxYzQwMDg3MmRiN2E1OTc2ZjcifQ.nskNw3KhFzeRKGpf7fz-zqVd0uDx1_ad5LBV1PeDa"
+}
 ~~~

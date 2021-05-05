@@ -2,26 +2,35 @@
 
 namespace App\Http\Controllers\Api;
 
-use App\Http\Controllers\Controller;
+use App\Http\Controllers\Api\JwtController;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use App\Models\User;
+use Illuminate\Support\Facades\Validator;
 
-class LoginController extends Controller
+class LoginController extends JwtController
 {
 	public function login(Request $request)
 	{
-		$request->validate([
+		$validator = Validator::make($request->all(), [
 			'name' => 'required|max:191',
 			'password' => 'required',
 		]);
 
-		if (Auth::attempt($request->only('name', 'password'))){
-			return response()->json(Auth::user(), 200);
+		if ($validator->fails()) {
+			return response()->json([
+			      'status'   => 'error',
+			      'message'  => $validator->getMessageBag()
+			   ], 400);
 		}
-		
-		throw ValidationException::withMessages([
-			'name' => ['The provided credentials are incorect.']
-		]);
+
+		if (!$token = Auth::attempt($request->only('name', 'password'))){
+         return response()->json([
+				   'status'   => 'error',
+	         	'message' => ['wrong' => ['The provided credentials are incorect']]
+	         ], 401);
+		}
+    	
+    	return response()->json(['token' => $token]);
 	}
 }
