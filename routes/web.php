@@ -13,21 +13,6 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::view('/', 'users');
-
-Route::middleware('guest')->group(function(){
-	Route::view('/register', 'auth.register')
-		->name('register');
-
-	Route::view('/login', 'auth.login')
-		->name('login');
-});
-
-Route::middleware('auth')->group(function(){
-	Route::get('logout', function(){
-		Auth::logout();
-	})->name('logout');
-
-	Route::view('/home', 'home')
-		->name('home');
+Route::get('/', function () {
+    return view('welcome');
 });
