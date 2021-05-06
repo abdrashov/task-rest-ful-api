@@ -149,17 +149,6 @@ status: 404
 	}
 }
 ~~~
-status: 404
-~~~json
-{
-	"status": "error",
-	"message": {
-		"wrong": [
-			"Not found"
-		]
-	}
-}
-~~~
 
 
 ### Delete post
