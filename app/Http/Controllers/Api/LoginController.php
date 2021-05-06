@@ -21,16 +21,28 @@ class LoginController extends JwtController
 			return response()->json([
 			      'status'   => 'error',
 			      'message'  => $validator->getMessageBag()
-			   ], 400);
+			   ], 422);
 		}
 
 		if (!$token = Auth::attempt($request->only('name', 'password'))){
          return response()->json([
 				   'status'   => 'error',
 	         	'message' => ['wrong' => ['The provided credentials are incorect']]
-	         ], 401);
+	         ], 422);
 		}
     	
-    	return response()->json(['token' => $token]);
+    	return response()->json(['token' => $token], 200);
+	}
+
+	public function refresh() {
+		try {
+			$token = auth()->refresh();
+		} catch (\Tymon\JWTAuth\Exceptions\TokenInvalidException $e) {
+			return response()->json([
+				'status'   => 'error',
+				'message' => $e->getMessage()
+			], 401);
+		}
+		return response()->json(['token' => $token], 200);
 	}
 }

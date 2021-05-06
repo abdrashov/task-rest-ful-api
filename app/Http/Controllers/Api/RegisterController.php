@@ -21,7 +21,7 @@ class RegisterController extends JwtController
 			return response()->json([
 			      'status'   => 'error',
 			      'message'  => $validator->getMessageBag()
-			   ], 400);
+			   ], 422);
 		}
 		
 		User::create([
