@@ -13,26 +13,39 @@
             body {
                 font-family: 'Nunito', sans-serif;
             }
+            .container {
+                margin: 0 auto;
+                max-width: 1270px;
+                padding: 0 20px;
+            }
         </style>
     </head>
-    <body class="antialiased" style="text-align: center;">
-        <h1>PHP junior</h1>
-        <ul>
-            <li>
-                Get all posts: api/post
-            </li>
-            <li>
-                Get post: api/post/{id}/show
-            </li>
-            <li>
-                Save post: api/post/store
-            </li>
-            <li>
-                Edit post: api/post/{id}/update
-            </li>
-            <li>
-                Delete post: api/post/{id}/destroy
-            </li>
-        </ul>
+    <body class="antialiased">
+        <div class="container">
+            <h1>RESTful API приложение</h1>
+            <ul>
+                <li>
+                    Login: api/login
+                </li>
+                <li>
+                    Register: api/register
+                </li>
+                <li>
+                    Get all posts: api/post
+                </li>
+                <li>
+                    Get post: api/post/{id}/show
+                </li>
+                <li>
+                    Save post: api/post/store
+                </li>
+                <li>
+                    Edit post: api/post/{id}/update
+                </li>
+                <li>
+                    Delete post: api/post/{id}/destroy
+                </li>
+            </ul>
+        </div>
     </body>
 </html>
