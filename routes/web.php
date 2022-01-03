@@ -16,8 +16,11 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     // test text
     return view('welcome');
+<<<<<<< HEAD
     // hello world
 
     // hhh
     // asds
+=======
+>>>>>>> parent of 4885613 (Update web.php)
 });
