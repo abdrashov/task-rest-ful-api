@@ -17,10 +17,13 @@ Route::get('/', function () {
     // test text
     return view('welcome');
 <<<<<<< HEAD
+<<<<<<< HEAD
     // hello world
 
     // hhh
     // asds
+=======
+>>>>>>> parent of 4885613 (Update web.php)
 =======
 >>>>>>> parent of 4885613 (Update web.php)
 });
